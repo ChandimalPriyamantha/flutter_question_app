@@ -45,17 +45,7 @@ class _MyAppState extends State<MyApp> {
           title: Text('My First App'),
         ),
         body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(
-                    questions[_questionIndex]['questioText'] as String,
-                  ),
-                  ...(questions[_questionIndex]['answer'] as List<String>)
-                      .map((answer) {
-                    return Answer(_answeQuestion, answer);
-                  }).toList()
-                ],
-              )
+            ?
             : Center(
                 child: Text('You did it!'),
               ),
