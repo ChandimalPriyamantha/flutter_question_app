@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:question_app/quiz.dart';
 import 'question.dart';
 import 'answer.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final questions = const [
+  final _questions = const [
     {
       'questioText': 'What\'s your favorite color?',
       'answer': ['Black', 'Red', 'Green', 'White'],
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
 
-    if (_questionIndex < questions.length) {}
+    if (_questionIndex < _questions.length) {}
   }
 
   @override
@@ -44,8 +45,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('My First App'),
         ),
-        body: _questionIndex < questions.length
-            ?
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answeQuestion: _answeQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
             : Center(
                 child: Text('You did it!'),
               ),
